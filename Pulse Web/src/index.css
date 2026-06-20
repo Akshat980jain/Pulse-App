@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 2%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 10% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 10% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 222 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 240 10% 8%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 10% 10%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 190 100% 44%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 14%;
+    --input: 240 10% 14%;
+    --ring: 222 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 10% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 222 100% 50%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 10% 10%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 10% 14%;
+    --sidebar-ring: 222 100% 50%;
+
+    --pulse-blue: 222 100% 50%;
+    --pulse-cyan: 190 100% 44%;
+    --glass-bg: 240 10% 6%;
+    --glass-border: 240 10% 16%;
+    --glass-blur: 24px;
+    --glass-opacity: 0.55;
+  }
+
+  .light {
+    --background: 220 14% 92%;
+    --foreground: 220 15% 20%;
+
+    --card: 220 14% 95%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 220 14% 95%;
+    --popover-foreground: 220 15% 20%;
+
+    --primary: 222 80% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 12% 88%;
+    --secondary-foreground: 220 15% 20%;
+
+    --muted: 220 12% 90%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 190 70% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 82%;
+    --input: 220 12% 84%;
+    --ring: 222 80% 45%;
+
+    --sidebar-background: 220 14% 94%;
+    --sidebar-foreground: 220 15% 20%;
+    --sidebar-primary: 222 80% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 90%;
+    --sidebar-accent-foreground: 220 15% 20%;
+    --sidebar-border: 220 12% 82%;
+    --sidebar-ring: 222 80% 45%;
+
+    --pulse-blue: 222 80% 45%;
+    --pulse-cyan: 190 70% 38%;
+    --glass-bg: 220 14% 96%;
+    --glass-border: 220 12% 80%;
+    --glass-blur: 24px;
+    --glass-opacity: 0.72;
+  }
+
+  .warm {
+    --background: 30 18% 90%;
+    --foreground: 25 20% 18%;
+
+    --card: 30 16% 93%;
+    --card-foreground: 25 20% 18%;
+
+    --popover: 30 16% 93%;
+    --popover-foreground: 25 20% 18%;
+
+    --primary: 25 75% 42%;
+    --primary-foreground: 40 30% 96%;
+
+    --secondary: 30 14% 86%;
+    --secondary-foreground: 25 20% 18%;
+
+    --muted: 30 14% 88%;
+    --muted-foreground: 25 12% 44%;
+
+    --accent: 165 50% 35%;
+    --accent-foreground: 40 30% 96%;
+
+    --destructive: 5 65% 48%;
+    --destructive-foreground: 40 30% 96%;
+
+    --border: 30 14% 80%;
+    --input: 30 14% 82%;
+    --ring: 25 75% 42%;
+
+    --sidebar-background: 30 16% 92%;
+    --sidebar-foreground: 25 20% 18%;
+    --sidebar-primary: 25 75% 42%;
+    --sidebar-primary-foreground: 40 30% 96%;
+    --sidebar-accent: 30 14% 88%;
+    --sidebar-accent-foreground: 25 20% 18%;
+    --sidebar-border: 30 14% 80%;
+    --sidebar-ring: 25 75% 42%;
+
+    --pulse-blue: 25 75% 42%;
+    --pulse-cyan: 165 50% 35%;
+    --glass-bg: 30 16% 94%;
+    --glass-border: 30 14% 78%;
+    --glass-blur: 24px;
+    --glass-opacity: 0.72;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  /* ── Island system ── */
+  .island-card {
+    background: hsl(var(--glass-bg) / var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid hsl(var(--glass-border) / 0.2);
+    border-radius: 1.5rem;
+    box-shadow:
+      0 8px 24px hsl(var(--glass-border) / 0.08),
+      0 20px 60px hsl(0 0% 0% / 0.15),
+      inset 0 1px 0 hsl(var(--glass-border) / 0.12);
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+  }
+
+  .island-card:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow:
+      0 12px 32px hsl(var(--glass-border) / 0.12),
+      0 24px 80px hsl(0 0% 0% / 0.2),
+      inset 0 1px 0 hsl(var(--glass-border) / 0.15);
+  }
+
+  .island-sidebar {
+    background: hsl(var(--glass-bg) / var(--glass-opacity));
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid hsl(var(--glass-border) / 0.15);
+    border-radius: 1.75rem;
+    box-shadow:
+      0 20px 60px hsl(0 0% 0% / 0.25),
+      0 8px 20px hsl(var(--glass-border) / 0.06),
+      inset 0 1px 0 hsl(var(--glass-border) / 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(222 100% 50%), hsl(190 100% 44%));
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(222 100% 50%), hsl(190 100% 44%));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Core glass effect - iPhone-inspired frosted glass */
+  .glass {
+    background: hsl(var(--glass-bg) / var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid hsl(var(--glass-border) / 0.35);
+    box-shadow:
+      0 1px 2px hsl(var(--glass-border) / 0.08),
+      inset 0 1px 0 hsl(var(--glass-border) / 0.15);
+  }
+
+  /* Glass card variant - subtle elevated glass panel */
+  .glass-card {
+    background: hsl(var(--glass-bg) / var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid hsl(var(--glass-border) / 0.25);
+    box-shadow:
+      0 4px 16px hsl(var(--glass-border) / 0.06),
+      0 1px 3px hsl(var(--glass-border) / 0.1),
+      inset 0 1px 0 hsl(var(--glass-border) / 0.12);
+  }
+
+  /* Glass surface - for nav bars and headers */
+  .glass-surface {
+    background: hsl(var(--glass-bg) / 0.7);
+    backdrop-filter: blur(32px) saturate(2);
+    -webkit-backdrop-filter: blur(32px) saturate(2);
+    border-bottom: 1px solid hsl(var(--glass-border) / 0.2);
+    box-shadow: 0 1px 3px hsl(var(--glass-border) / 0.05);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 60px -12px hsl(222 100% 50% / 0.4);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 60px -12px hsl(190 100% 44% / 0.3);
+  }
+
+  .radial-glow {
+    background: radial-gradient(
+      600px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      hsl(222 100% 50% / 0.08),
+      transparent 40%
+    );
+  }
+}
