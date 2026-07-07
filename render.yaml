@@ -1,0 +1,19 @@
+services:
+  - type: static
+    name: pulse-web
+    rootDir: Pulse Web
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_SUPABASE_PROJECT_ID
+        value: auwbveyhrhowzmwmvhhc
+      - key: VITE_SUPABASE_PUBLISHABLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1d2J2ZXlocmhvd3ptd212aGhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NDYyODAsImV4cCI6MjA4NjAyMjI4MH0.no_fOsUgQwE3aq172T0Whu2YCExmmSOLT6L-tkDQBq8
+      - key: VITE_SUPABASE_URL
+        value: https://auwbveyhrhowzmwmvhhc.supabase.co
+      - key: VITE_Open_Router
+        sync: false # Prompt in the Render dashboard to avoid committing secret keys to Git
