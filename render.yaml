@@ -1,9 +1,10 @@
 services:
-  - type: static
+  - type: web
     name: pulse-web
+    runtime: static
     rootDir: Pulse Web
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    publishPath: dist
     routes:
       - type: rewrite
         source: /*
